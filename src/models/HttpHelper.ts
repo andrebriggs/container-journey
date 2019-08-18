@@ -1,10 +1,18 @@
-export class HttpHelper {
+import axios from 'axios';
 
-    public static httpGet(theUrl: string)
+export class HttpHelper {
+    public static httpGet(theUrl: string, callback: (data: any) => void, accessToken?: string)
     {
-        const xmlHttp = new XMLHttpRequest();
-        xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
-        xmlHttp.send( null );
-        return xmlHttp.responseText;
+        axios.get(theUrl, accessToken ? {
+            headers: {
+                "Authorization": "Basic " + Buffer.from(":" + accessToken).toString('base64')
+            }
+        } : {}
+        ).then((response) => {
+            callback(response);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
     }
 }

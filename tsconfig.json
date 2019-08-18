@@ -1,10 +1,12 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
     "outDir": "build/dist",
-    "module": "esnext",
-    "target": "es5",
-    "lib": ["es6", "dom"],
+    "module": "commonjs",
+    "target": "es6",
+    "lib": ["es2017", "es2015", "dom", "es6"],
     "sourceMap": true,
     "allowJs": true,
     "jsx": "react",
@@ -25,7 +27,7 @@
     "scripts",
     "acceptance-tests",
     "webpack",
-    "jest",
-    "src/setupTests.ts"
+    "src/setupTests.ts",
+    "pipeline-scripts"
   ]
 }
