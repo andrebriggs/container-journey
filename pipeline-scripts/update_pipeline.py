@@ -29,6 +29,11 @@ def update_pipeline(account_name, account_key, table_name, partition_name, filte
                 add = True
             entity[name3] = value3.lower()
 
+        if name4 != None and value4 != None:
+            if name4 in entity and entity[name4] != value4.lower():
+                add = True
+            entity[name4] = value4.lower()
+
         if add == False:
             table_service.update_entity(table_name, entity)
             print("Updating existing entry")
